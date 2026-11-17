@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sơ Đồ Hợp Chất Vô Cơ &amp; Tư Duy Điều Chế Muối Vô Cơ</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">⚗️</div>
+      <div>
+        <h1>Sơ Đồ Hóa Học Vô Cơ</h1>
+        <p class="subtitle">Mối quan hệ giữa các hợp chất vô cơ &amp; Sơ đồ tư duy điều chế muối (GDPT 2018)</p>
+      </div>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="Chọn sơ đồ">
+      <button class="tab-btn active" data-tab="relation" role="tab" aria-selected="true">
+        1. Mối quan hệ hợp chất vô cơ
+      </button>
+      <button class="tab-btn" data-tab="salt" role="tab" aria-selected="false">
+        2. Sơ đồ tư duy điều chế muối
+      </button>
+      <button class="tab-btn" data-tab="table" role="tab" aria-selected="false">
+        📋 Bảng tổng hợp (70 PTHH)
+      </button>
+    </nav>
+
+    <div class="topbar-actions">
+      <div class="uniqueness-badge" id="uniquenessBadge" title="Kiểm tra tự động toàn bộ phương trình hóa học">
+        <span class="dot"></span>
+        <span id="uniquenessText">Đang kiểm tra PTHH...</span>
+      </div>
+      <button class="btn-outline" id="btnPrint" title="In hoặc lưu PDF">🖨️ In / PDF</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Left / Main Diagram Area -->
+    <section class="canvas-pane" id="canvasPane">
+      <div class="canvas-toolbar">
+        <div class="toolbar-left">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Tìm chất hoặc PTHH (vd: FeCl3, CaCO3, nhiệt phân...)" />
+            <button id="clearSearch" class="clear-btn" hidden title="Xóa tìm kiếm">✕</button>
+          </div>
+          <label class="toggle-chip" id="extendedToggleWrap">
+            <input type="checkbox" id="toggleExtended" checked />
+            <span>Hiện Kim loại &amp; Phi kim</span>
+          </label>
+        </div>
+
+        <div class="toolbar-right">
+          <button class="icon-btn" id="zoomOut" title="Thu nhỏ">−</button>
+          <span class="zoom-label" id="zoomLabel">100%</span>
+          <button class="icon-btn" id="zoomIn" title="Phóng to">+</button>
+          <button class="btn-small" id="zoomReset" title="Đưa về mặc định">Căn giữa</button>
+        </div>
+      </div>
+
+      <!-- Search Results Dropdown -->
+      <div class="search-results" id="searchResults" hidden></div>
+
+      <!-- Interactive SVG Container -->
+      <div class="svg-viewport" id="svgViewport">
+        <svg id="diagramSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend-bar" id="legendBar">
+        <span class="legend-item"><i style="background:#d97706"></i>Oxide base</span>
+        <span class="legend-item"><i style="background:#7c3aed"></i>Oxide acid</span>
+        <span class="legend-item"><i style="background:#059669"></i>Base</span>
+        <span class="legend-item"><i style="background:#e11d48"></i>Acid</span>
+        <span class="legend-item"><i style="background:#4f46e5"></i>Muối</span>
+        <span class="legend-item extended-legend"><i style="background:#2563eb"></i>Kim loại</span>
+        <span class="legend-item extended-legend"><i style="background:#0d9488"></i>Phi kim</span>
+        <span class="legend-hint">💡 Nhấp vào <b>mũi tên / nhánh</b> để xem 2 PTHH minh họa</span>
+      </div>
+    </section>
+
+    <!-- Right Inspector Panel -->
+    <aside class="inspector-pane" id="inspectorPane">
+      <div class="inspector-header">
+        <span class="inspector-badge" id="inspectorBadge">HƯỚNG DẪN</span>
+        <h2 id="inspectorTitle">Chọn một liên kết hoặc nút</h2>
+      </div>
+      <div class="inspector-body" id="inspectorBody">
+        <div class="empty-state">
+          <p>Nhấp vào bất kỳ <strong>mũi tên</strong> (ở Sơ đồ 1) hoặc <strong>nhánh phương pháp</strong> (ở Sơ đồ 2) để xem:</p>
+          <ul>
+            <li>Quy tắc hóa học &amp; điều kiện xảy ra phản ứng.</li>
+            <li><strong>2 ví dụ minh họa bằng PTHH</strong> đã cân bằng chuẩn xác.</li>
+            <li>Đảm bảo <strong>70/70 PTHH hoàn toàn không trùng lặp</strong> trên cả hai sơ đồ.</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Summary Table View (Hidden by default) -->
+    <section class="table-pane" id="tablePane" hidden>
+      <div class="table-header-bar">
+        <div>
+          <h2>Bảng Tổng Hợp Toàn Bộ Phương Trình Hóa Học</h2>
+          <p>Toàn bộ 35 liên kết/nhánh × 2 ví dụ = 70 PTHH duy nhất, không trùng lặp.</p>
+        </div>
+        <div class="table-filters">
+          <select id="tableFilterSelect">
+            <option value="all">Tất cả (70 PTHH)</option>
+            <option value="relation">Sơ đồ 1: Mối quan hệ hợp chất vô cơ (36 PTHH)</option>
+            <option value="salt">Sơ đồ 2: Điều chế muối vô cơ (34 PTHH)</option>
+          </select>
+        </div>
+      </div>
+      <div id="tableContent" class="table-content"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
