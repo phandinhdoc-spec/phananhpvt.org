@@ -915,3 +915,136 @@ const SALT_MINDMAP = {
     }
   ]
 };
+
+const SALT_PROPERTIES = [
+  {
+    id: "prop-metal",
+    number: "01",
+    title: "Tác dụng với kim loại",
+    icon: "⚙️",
+    color: "#2563eb",
+    bgSoft: "#eff6ff",
+    formula: "Muối + Kim loại ⟶ Muối mới + Kim loại mới",
+    condition: "Kim loại tham gia đứng trước kim loại trong muối (theo dãy hoạt động hóa học, trừ K, Na, Ca… tác dụng với nước trước).",
+    examples: [
+      {
+        eq: "Fe + CuSO₄ → FeSO₄ + Cu↓",
+        html: "Fe + CuSO<sub>4</sub> → FeSO<sub>4</sub> + Cu↓",
+        phenomenon: "Kim loại đồng màu đỏ bám ngoài đinh sắt, màu xanh lam của dung dịch nhạt dần."
+      },
+      {
+        eq: "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag↓",
+        html: "Cu + 2AgNO<sub>3</sub> → Cu(NO<sub>3</sub>)<sub>2</sub> + 2Ag↓",
+        phenomenon: "Bạc màu trắng xám bám lên dây đồng, dung dịch không màu chuyển dần sang màu xanh lam."
+      },
+      {
+        eq: "Zn + FeSO₄ → ZnSO₄ + Fe↓",
+        html: "Zn + FeSO<sub>4</sub> → ZnSO<sub>4</sub> + Fe↓",
+        phenomenon: "Kẽm đẩy sắt ra khỏi dung dịch muối, tạo kết tủa sắt màu xám."
+      }
+    ]
+  },
+  {
+    id: "prop-acid",
+    number: "02",
+    title: "Tác dụng với acid",
+    icon: "🧪",
+    color: "#e11d48",
+    bgSoft: "#fff1f2",
+    formula: "Muối + Acid ⟶ Muối mới + Acid mới",
+    condition: "Sản phẩm phải có ít nhất một chất kết tủa (↓) hoặc chất khí bay lên (↑) hoặc acid yếu hơn.",
+    examples: [
+      {
+        eq: "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑",
+        html: "CaCO<sub>3</sub> + 2HCl → CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>↑",
+        phenomenon: "Đá vôi tan dần, có bọt khí không màu (CO₂) thoát ra."
+      },
+      {
+        eq: "BaCl₂ + H₂SO₄ → BaSO₄↓ + 2HCl",
+        html: "BaCl<sub>2</sub> + H<sub>2</sub>SO<sub>4</sub> → BaSO<sub>4</sub>↓ + 2HCl",
+        phenomenon: "Xuất hiện kết tủa trắng BaSO₄ không tan trong acid."
+      },
+      {
+        eq: "AgNO₃ + HCl → AgCl↓ + HNO₃",
+        html: "AgNO<sub>3</sub> + HCl → AgCl↓ + HNO<sub>3</sub>",
+        phenomenon: "Xuất hiện kết tủa trắng AgCl."
+      }
+    ]
+  },
+  {
+    id: "prop-base",
+    number: "03",
+    title: "Tác dụng với base (kiềm)",
+    icon: "💧",
+    color: "#059669",
+    bgSoft: "#ecfdf5",
+    formula: "Muối + Base ⟶ Muối mới + Base mới",
+    condition: "Hai chất tham gia đều phải tan (dung dịch) và sản phẩm có ít nhất một chất kết tủa (↓) hoặc chất khí.",
+    examples: [
+      {
+        eq: "CuSO₄ + 2NaOH → Cu(OH)₂↓ + Na₂SO₄",
+        html: "CuSO<sub>4</sub> + 2NaOH → Cu(OH)<sub>2</sub>↓ + Na<sub>2</sub>SO<sub>4</sub>",
+        phenomenon: "Xuất hiện kết tủa màu xanh lam Cu(OH)₂."
+      },
+      {
+        eq: "FeCl₃ + 3NaOH → Fe(OH)₃↓ + 3NaCl",
+        html: "FeCl<sub>3</sub> + 3NaOH → Fe(OH)<sub>3</sub>↓ + 3NaCl",
+        phenomenon: "Xuất hiện kết tủa màu nâu đỏ Fe(OH)₃."
+      },
+      {
+        eq: "Na₂CO₃ + Ca(OH)₂ → CaCO₃↓ + 2NaOH",
+        html: "Na<sub>2</sub>CO<sub>3</sub> + Ca(OH)<sub>2</sub> → CaCO<sub>3</sub>↓ + 2NaOH",
+        phenomenon: "Xuất hiện kết tủa trắng CaCO₃."
+      }
+    ]
+  },
+  {
+    id: "prop-salt",
+    number: "04",
+    title: "Tác dụng với muối khác",
+    icon: "🔄",
+    color: "#4f46e5",
+    bgSoft: "#eef2ff",
+    formula: "Muối 1 + Muối 2 ⟶ 2 Muối mới",
+    condition: "Hai muối tham gia đều phải tan trong nước và sản phẩm có ít nhất một muối kết tủa (↓).",
+    examples: [
+      {
+        eq: "NaCl + AgNO₃ → AgCl↓ + NaNO₃",
+        html: "NaCl + AgNO<sub>3</sub> → AgCl↓ + NaNO<sub>3</sub>",
+        phenomenon: "Xuất hiện kết tủa trắng AgCl."
+      },
+      {
+        eq: "BaCl₂ + Na₂SO₄ → BaSO₄↓ + 2NaCl",
+        html: "BaCl<sub>2</sub> + Na<sub>2</sub>SO<sub>4</sub> → BaSO<sub>4</sub>↓ + 2NaCl",
+        phenomenon: "Xuất hiện kết tủa trắng BaSO₄."
+      },
+      {
+        eq: "CaCl₂ + Na₂CO₃ → CaCO₃↓ + 2NaCl",
+        html: "CaCl<sub>2</sub> + Na<sub>2</sub>CO<sub>3</sub> → CaCO<sub>3</sub>↓ + 2NaCl",
+        phenomenon: "Xuất hiện kết tủa trắng CaCO₃."
+      }
+    ]
+  },
+  {
+    id: "prop-decompose",
+    number: "05",
+    title: "Phản ứng nhiệt phân muối",
+    icon: "🔥",
+    color: "#d97706",
+    bgSoft: "#fffbeb",
+    formula: "Muối —(t°)⟶ Oxide / Muối mới + Khí",
+    condition: "Một số muối (như muối carbonate không tan, muối chlorate, nitrate…) bị phân hủy khi đun nóng ở nhiệt độ cao.",
+    examples: [
+      {
+        eq: "CaCO₃ —(t°)→ CaO + CO₂↑",
+        html: "CaCO<sub>3</sub> <span class=\"eq-cond-inline\">t°</span>→ CaO + CO<sub>2</sub>↑",
+        phenomenon: "Phản ứng nung đá vôi sản xuất vôi sống (CaO) và giải phóng khí CO₂."
+      },
+      {
+        eq: "2KClO₃ —(t°, MnO₂)→ 2KCl + 3O₂↑",
+        html: "2KClO<sub>3</sub> <span class=\"eq-cond-inline\">t°, MnO₂</span>→ 2KCl + 3O<sub>2</sub>↑",
+        phenomenon: "Dùng để điều chế khí oxygen trong phòng thí nghiệm."
+      }
+    ]
+  }
+];

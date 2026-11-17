@@ -6,6 +6,8 @@
   const canvasPane = document.getElementById("canvasPane");
   const inspectorPane = document.getElementById("inspectorPane");
   const tablePane = document.getElementById("tablePane");
+  const propertiesPane = document.getElementById("propertiesPane");
+  const propertiesGrid = document.getElementById("propertiesGrid");
   const legendBar = document.getElementById("legendBar");
   const extendedToggleWrap = document.getElementById("extendedToggleWrap");
   const toggleExtended = document.getElementById("toggleExtended");
@@ -837,6 +839,41 @@
     searchResults.hidden = false;
   }
 
+  // --- 6b. Salt Properties View ---
+  function renderSaltProperties() {
+    if (!propertiesGrid || typeof SALT_PROPERTIES === "undefined") return;
+    propertiesGrid.innerHTML = SALT_PROPERTIES.map((prop) => {
+      const examplesHtml = prop.examples
+        .map(
+          (ex, idx) => `
+          <div class="prop-example-item">
+            <div class="prop-eq"><span class="prop-eq-num">${idx + 1}</span><span>${ex.html}</span></div>
+            <div class="prop-phenom">💡 ${ex.phenomenon}</div>
+          </div>`
+        )
+        .join("");
+
+      return `
+        <article class="prop-card" style="--prop-color: ${prop.color}; --prop-bg: ${prop.bgSoft};">
+          <div class="prop-card-header">
+            <div class="prop-icon" aria-hidden="true">${prop.icon}</div>
+            <div>
+              <span class="prop-num">TÍNH CHẤT ${prop.number}</span>
+              <h3>${prop.title}</h3>
+            </div>
+          </div>
+          <div class="prop-formula">${prop.formula}</div>
+          <div class="prop-condition">
+            <strong>Điều kiện:</strong> ${prop.condition}
+          </div>
+          <div class="prop-examples">
+            <div class="prop-examples-title">Ví dụ minh họa (${prop.examples.length} PTHH):</div>
+            ${examplesHtml}
+          </div>
+        </article>`;
+    }).join("");
+  }
+
   // --- 7. Tab Switching & Events ---
   function switchTab(tab) {
     currentTab = tab;
@@ -849,12 +886,20 @@
     if (tab === "table") {
       canvasPane.hidden = true;
       inspectorPane.hidden = true;
+      propertiesPane.hidden = true;
       tablePane.hidden = false;
       renderSummaryTable(tableFilterSelect.value);
+    } else if (tab === "salt-properties") {
+      canvasPane.hidden = true;
+      inspectorPane.hidden = true;
+      tablePane.hidden = true;
+      propertiesPane.hidden = false;
+      renderSaltProperties();
     } else {
       canvasPane.hidden = false;
       inspectorPane.hidden = false;
       tablePane.hidden = true;
+      propertiesPane.hidden = true;
       resetView();
 
       if (tab === "relation") {
